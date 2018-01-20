@@ -15,7 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        let conf = Configuration.fromPlist
+        let fetcher = NetworkFetcher(configuration: conf)
+        let locationFetcher = LocationFetcher(fetcher: fetcher)
+        locationFetcher.fetchWeather(forCityID: "4303439") { weather in
+            print("\(String(describing: weather))")
+        }
         return true
     }
 
