@@ -9,8 +9,8 @@
 import UIKit
 
 
-private let minTemperature: Float = 210 // K
-private let maxTemperature: Float = 340 // K
+private let minTemperature: Float = 240 // K
+private let maxTemperature: Float = 320 // K
 
 
 final class WeatherViewController: UIViewController {

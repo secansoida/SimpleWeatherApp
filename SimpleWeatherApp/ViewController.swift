@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 
     private var filteredCities: [City] = []
     private let searchController = UISearchController(searchResultsController: nil)
-    private var lastQuery: String = ""
+    private var lastQuery: String = "."
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Cities"
+        searchController.searchBar.delegate = self
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
     }
@@ -57,16 +58,28 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 extension ViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-        guard let query = searchController.searchBar.text, query.count > 2 else {
-            filteredCities = []
-            tableView.reloadData()
-            return
+        guard let query = searchController.searchBar.text?.trimmingCharacters(in: .whitespaces).lowercased(),
+            query.count > 2 else {
+                filteredCities = []
+                lastQuery = "."
+                tableView.reloadData()
+                return
         }
         if query.contains(lastQuery) {
-            filteredCities = filteredCities.lazy.filter{ $0.name.contains(query) }
+            filteredCities = filteredCities.filter{ $0.name.lowercased().contains(query) }
         } else {
-            filteredCities = allCities.lazy.filter{ $0.name.contains(query) }
+            filteredCities = allCities.filter{ $0.name.lowercased().contains(query) }
         }
+        lastQuery = query
         tableView.reloadData()
+    }
+}
+
+extension ViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text.rangeOfCharacter(from: CharacterSet.letters.inverted) != nil {
+            return false
+        }
+        return true
     }
 }
