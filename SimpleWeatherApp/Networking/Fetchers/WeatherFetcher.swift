@@ -10,7 +10,7 @@ import Foundation
 
 final class WeatherFetcher {
 
-    let fetcher: Fetcher
+    private let fetcher: Fetcher
     init(fetcher: Fetcher) {
         self.fetcher = fetcher
     }

@@ -22,7 +22,11 @@ struct Weather: Codable {
 
     struct Conditions: Codable {
         let temp: Float
-        let pressure: Int
+        let pressure: Float
         let humidity: Int
+
+        var temperatureInCelcius: Float {
+            return temp - 272.15
+        }
     }
 }

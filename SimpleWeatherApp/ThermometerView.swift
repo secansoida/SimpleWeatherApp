@@ -8,41 +8,132 @@
 
 import UIKit
 
-@IBDesignable class ThermometerView: UIView {
+
+private let lineWidth: CGFloat = 4
+
+
+@IBDesignable final class ThermometerView: UIView {
 
     override var bounds: CGRect {
         didSet {
-            setNeedsDisplay()
+
+            setupMaskLayer()
+            setupFillLayerPath()
+            setupThermometerLayerPath()
         }
     }
 
-    var fillPercentage: CGFloat = 0.75
-    var fillColor: UIColor = .red
+    @IBInspectable var fillPercentage: CGFloat {
+        get {
+            return percentage
+        }
+        set {
+            if isAnimating {
+                return
+            }
+            percentage = newValue
+            setupFillLayerPath()
+        }
+    }
 
-    override func draw(_ rect: CGRect) {
+    @IBInspectable var fillColor: UIColor = .red {
+        didSet {
+            setupFillLayer()
+        }
+    }
 
-        let lineWidth: CGFloat = 4
-        let margin = lineWidth / 2.0
-        let width = bounds.width - lineWidth
-        let height = bounds.height - lineWidth
+    private var isAnimating = false
+    private var percentage: CGFloat = 0.5
+    private var fillLayer = CAShapeLayer()
+    private var thermometerLayer = CAShapeLayer()
 
-        let notFilledY = bounds.height * (1 - fillPercentage)
-        var fillRect = bounds
-        fillRect.origin.y = notFilledY
-        fillRect.size.height -= notFilledY
-        let fillPath = UIBezierPath(rect: fillRect)
-        fillColor.setFill()
-        fillPath.fill()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
 
-        let thermometerRect = bounds.insetBy(dx: margin, dy: margin)
-        let rectanglePath = UIBezierPath(roundedRect: thermometerRect, cornerRadius: width / 2)
-        UIColor.black.setStroke()
-        rectanglePath.lineWidth = lineWidth
-        rectanglePath.stroke()
+        setup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        setup()
+    }
+
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+
+        setup()
+    }
+
+    func animate() {
+        isAnimating = true
+        let animation = CABasicAnimation(keyPath: "path")
+        animation.fromValue = fillPath(forPerctentage: 0.4)
+        animation.toValue = fillPath(forPerctentage: 0.6)
+        animation.duration = 1
+        animation.repeatCount = Float.greatestFiniteMagnitude
+        animation.autoreverses = true
+        animation.fillMode = kCAFillModeForwards
+        fillLayer.add(animation, forKey: nil)
+    }
+
+    func stopAnimating() {
+        fillLayer.removeAllAnimations()
+        percentage = (fillLayer.path?.boundingBoxOfPath.height ?? 0) / bounds.height
+        isAnimating = false
+    }
+
+    func animateFill(toPercentage percentage: CGFloat) {
+        CATransaction.begin()
+        let animation = CABasicAnimation(keyPath: "path")
+        let newPath = fillPath(forPerctentage: percentage)
+        animation.toValue = newPath
+        animation.duration = Double(2.5 * abs(fillPercentage - percentage))
+        //animation.isRemovedOnCompletion = true
+        animation.fillMode = kCAFillModeForwards
+        isAnimating = true
+        CATransaction.setCompletionBlock {
+            self.percentage = percentage
+            self.isAnimating = false
+            self.fillLayer.path = newPath
+        }
+        fillLayer.add(animation, forKey: nil)
+        CATransaction.commit()
+    }
+
+    private func setup() {
+        layer.addSublayer(fillLayer)
+        layer.addSublayer(thermometerLayer)
+
+        setupMaskLayer()
+        setupFillLayer()
+        setupFillLayerPath()
+        setupThermometerLayer()
+        setupThermometerLayerPath()
+    }
+
+    private func setupMaskLayer() {
 
         let maskLayer = CAShapeLayer()
+        let width = bounds.width - lineWidth
         maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: width / 2).cgPath
         layer.mask = maskLayer
+    }
+
+    private func setupThermometerLayer() {
+        thermometerLayer.lineWidth = lineWidth
+        thermometerLayer.strokeColor = UIColor.black.cgColor
+        thermometerLayer.fillColor = nil
+    }
+
+    private func setupThermometerLayerPath() {
+
+        let height = bounds.height - lineWidth
+        let width = bounds.width - lineWidth
+        let thermometerRect = bounds.insetBy(dx: lineWidth / 2, dy: lineWidth / 2)
+        let thermometerPath = UIBezierPath(roundedRect: thermometerRect, cornerRadius: width / 2)
+        thermometerPath.lineWidth = lineWidth
+        thermometerPath.stroke()
 
         guard width > 0 else {
             return
@@ -56,13 +147,27 @@ import UIKit
         let scaleLineLength = width / 2
 
         for i in 0..<numberOfScaleLines {
-            let bezierPath = UIBezierPath()
-            let y = margin + width / 2 + CGFloat(i) * graduationDistance
-            let x = margin + width
-            bezierPath.move(to: CGPoint(x: x - scaleLineLength, y: y))
-            bezierPath.addLine(to: CGPoint(x: x, y: y))
-            bezierPath.lineWidth = lineWidth
-            bezierPath.stroke()
+            let y = lineWidth / 2 + width / 2 + CGFloat(i) * graduationDistance
+            let x = lineWidth / 2 + width
+            thermometerPath.move(to: CGPoint(x: x - scaleLineLength, y: y))
+            thermometerPath.addLine(to: CGPoint(x: x, y: y))
         }
+        thermometerLayer.path = thermometerPath.cgPath
+    }
+
+    private func setupFillLayer() {
+        fillLayer.fillColor = fillColor.cgColor
+    }
+
+    private func setupFillLayerPath() {
+        fillLayer.path = fillPath(forPerctentage: fillPercentage)
+    }
+
+    private func fillPath(forPerctentage perctentage: CGFloat) -> CGPath {
+        let notFilledY = bounds.height * (1 - perctentage)
+        var fillRect = bounds
+        fillRect.origin.y = notFilledY
+        fillRect.size.height -= notFilledY
+        return CGPath(rect: fillRect, transform: nil)
     }
 }
