@@ -15,7 +15,6 @@
 		D1D9A97C2012232E00D77D4F /* SimpleWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A97B2012232E00D77D4F /* SimpleWeatherAppTests.swift */; };
 		D1D9A9872012232E00D77D4F /* SimpleWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9862012232E00D77D4F /* SimpleWeatherAppUITests.swift */; };
 		D1D9A99520138CAC00D77D4F /* WeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A99420138CAC00D77D4F /* WeatherFetcher.swift */; };
-		D1D9A99C2013AC6600D77D4F /* city.list.json in Resources */ = {isa = PBXBuildFile; fileRef = D1D9A99B2013AC6600D77D4F /* city.list.json */; };
 		D1D9A99E2013B5D200D77D4F /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D9A99D2013B5D200D77D4F /* config.plist */; };
 		D1D9A9A22014A88C00D77D4F /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A12014A88C00D77D4F /* City.swift */; };
 		D1D9A9A42014A8AC00D77D4F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A32014A8AC00D77D4F /* Weather.swift */; };
@@ -27,6 +26,10 @@
 		D1E7BA3B2015200F00336A9D /* RecentSearchesPersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA3A2015200F00336A9D /* RecentSearchesPersistance.swift */; };
 		D1E7BA3D2015204600336A9D /* UserDefaults+RecentsPersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA3C2015204600336A9D /* UserDefaults+RecentsPersistance.swift */; };
 		D1E7BA402015207F00336A9D /* Array+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA3F2015207F00336A9D /* Array+Convenience.swift */; };
+		D1E7BA43201524E900336A9D /* SQLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA42201524E900336A9D /* SQLite.swift */; };
+		D1E7BA46201529D700336A9D /* citylist.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = D1E7BA45201529D700336A9D /* citylist.sqlite3 */; };
+		D1E7BA4920152E3800336A9D /* CityListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA4820152E3800336A9D /* CityListProvider.swift */; };
+		D1E7BA4B20152E7500336A9D /* SQLiteCityListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA4A20152E7500336A9D /* SQLiteCityListProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +64,6 @@
 		D1D9A9862012232E00D77D4F /* SimpleWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWeatherAppUITests.swift; sourceTree = "<group>"; };
 		D1D9A9882012232E00D77D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1D9A99420138CAC00D77D4F /* WeatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFetcher.swift; sourceTree = "<group>"; };
-		D1D9A99B2013AC6600D77D4F /* city.list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.list.json; sourceTree = "<group>"; };
 		D1D9A99D2013B5D200D77D4F /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		D1D9A9A12014A88C00D77D4F /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		D1D9A9A32014A8AC00D77D4F /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
@@ -73,6 +75,11 @@
 		D1E7BA3A2015200F00336A9D /* RecentSearchesPersistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchesPersistance.swift; sourceTree = "<group>"; };
 		D1E7BA3C2015204600336A9D /* UserDefaults+RecentsPersistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+RecentsPersistance.swift"; sourceTree = "<group>"; };
 		D1E7BA3F2015207F00336A9D /* Array+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Convenience.swift"; sourceTree = "<group>"; };
+		D1E7BA42201524E900336A9D /* SQLite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLite.swift; sourceTree = "<group>"; };
+		D1E7BA442015254900336A9D /* SimpleWeatherApp-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleWeatherApp-BridgingHeader.h"; sourceTree = "<group>"; };
+		D1E7BA45201529D700336A9D /* citylist.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = citylist.sqlite3; sourceTree = "<group>"; };
+		D1E7BA4820152E3800336A9D /* CityListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListProvider.swift; sourceTree = "<group>"; };
+		D1E7BA4A20152E7500336A9D /* SQLiteCityListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteCityListProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +130,8 @@
 		D1D9A9652012232E00D77D4F /* SimpleWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1E7BA4720152E2600336A9D /* CityList */,
+				D1E7BA41201524D000336A9D /* SQLite */,
 				D1E7BA3E2015206500336A9D /* Helpers */,
 				D1E7BA3920151FF100336A9D /* Persistance */,
 				D1D9A99F2014A86D00D77D4F /* Networking */,
@@ -160,8 +169,9 @@
 		D1D9A9962013A7EB00D77D4F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D1D9A99B2013AC6600D77D4F /* city.list.json */,
+				D1E7BA45201529D700336A9D /* citylist.sqlite3 */,
 				D1D9A99D2013B5D200D77D4F /* config.plist */,
+				D1E7BA442015254900336A9D /* SimpleWeatherApp-BridgingHeader.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -210,6 +220,23 @@
 				D1E7BA3F2015207F00336A9D /* Array+Convenience.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D1E7BA41201524D000336A9D /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				D1E7BA42201524E900336A9D /* SQLite.swift */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
+		D1E7BA4720152E2600336A9D /* CityList */ = {
+			isa = PBXGroup;
+			children = (
+				D1E7BA4820152E3800336A9D /* CityListProvider.swift */,
+				D1E7BA4A20152E7500336A9D /* SQLiteCityListProvider.swift */,
+			);
+			path = CityList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,7 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D9A9712012232E00D77D4F /* LaunchScreen.storyboard in Resources */,
-				D1D9A99C2013AC6600D77D4F /* city.list.json in Resources */,
+				D1E7BA46201529D700336A9D /* citylist.sqlite3 in Resources */,
 				D1D9A96E2012232E00D77D4F /* Assets.xcassets in Resources */,
 				D1D9A96C2012232E00D77D4F /* Main.storyboard in Resources */,
 				D1D9A99E2013B5D200D77D4F /* config.plist in Resources */,
@@ -349,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D9A9692012232E00D77D4F /* ViewController.swift in Sources */,
+				D1E7BA43201524E900336A9D /* SQLite.swift in Sources */,
 				D1D9A9AF2014B81200D77D4F /* ThermometerView.swift in Sources */,
 				D1D9A9AD2014AA9500D77D4F /* WeatherViewController.swift in Sources */,
 				D1E7BA3D2015204600336A9D /* UserDefaults+RecentsPersistance.swift in Sources */,
@@ -356,7 +384,9 @@
 				D1E7BA3B2015200F00336A9D /* RecentSearchesPersistance.swift in Sources */,
 				D1D9A9672012232E00D77D4F /* AppDelegate.swift in Sources */,
 				D1D9A9A82014A8FF00D77D4F /* Configuration.swift in Sources */,
+				D1E7BA4B20152E7500336A9D /* SQLiteCityListProvider.swift in Sources */,
 				D1D9A9A22014A88C00D77D4F /* City.swift in Sources */,
+				D1E7BA4920152E3800336A9D /* CityListProvider.swift in Sources */,
 				D1D9A99520138CAC00D77D4F /* WeatherFetcher.swift in Sources */,
 				D1D9A9A62014A8DE00D77D4F /* NetworkFetcher.swift in Sources */,
 				D1E7BA402015207F00336A9D /* Array+Convenience.swift in Sources */,
@@ -533,6 +563,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.secansoida.SimpleWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SimpleWeatherApp/Supporting Files/SimpleWeatherApp-BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -549,6 +580,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.secansoida.SimpleWeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SimpleWeatherApp/Supporting Files/SimpleWeatherApp-BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

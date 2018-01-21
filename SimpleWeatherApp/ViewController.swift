@@ -20,12 +20,8 @@ class ViewController: UIViewController {
 
     private var mode: Mode = .recent
 
-    private lazy var allCities: [City] = {
-        let cityData = FileManager.default.contents(atPath: Bundle.main.path(forResource: "city.list", ofType: "json")!)!
-        return try! JSONDecoder().decode([City].self, from: cityData)
-    }()
-
     private var recentSearchesProvider: RecentSearchesPersistance = UserDefaults.standard
+    private let cityListProvider: CityListProvider = SQLiteCityListProvider.default
     private var recentlySearchedCities: [City] = []
     private var filteredCities: [City] = []
     private let searchController = UISearchController(searchResultsController: nil)
@@ -112,14 +108,14 @@ extension ViewController: UISearchResultsUpdating {
         guard let query = searchText?.trimmingCharacters(in: .whitespaces).lowercased(),
             query.count > 2 else {
                 filteredCities = []
-                lastQuery = "."
+                lastQuery = ""
                 tableView.reloadData()
                 return
         }
-        if query.contains(lastQuery) {
+        if !lastQuery.isEmpty && query.contains(lastQuery) {
             filteredCities = filteredCities.filter{ $0.name.lowercased().contains(query) }
         } else {
-            filteredCities = allCities.filter{ $0.name.lowercased().contains(query) }
+            filteredCities = cityListProvider.cities(matchingQuery: query)
         }
         lastQuery = query
         tableView.reloadData()
@@ -128,7 +124,7 @@ extension ViewController: UISearchResultsUpdating {
 
 extension ViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text.rangeOfCharacter(from: CharacterSet.letters.inverted) != nil {
+        if text.rangeOfCharacter(from: CharacterSet.letters.union(.whitespaces).inverted) != nil {
             return false
         }
         return true
