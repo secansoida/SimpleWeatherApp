@@ -89,7 +89,7 @@ private let lineWidth: CGFloat = 4
         let newPath = fillPath(forPerctentage: percentage)
         animation.toValue = newPath
         animation.duration = Double(2.5 * abs(fillPercentage - percentage))
-        //animation.isRemovedOnCompletion = true
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         animation.fillMode = kCAFillModeForwards
         isAnimating = true
         CATransaction.setCompletionBlock {

@@ -45,7 +45,7 @@ final class WeatherViewController: UIViewController {
             guard let weather = weather else {
                 return
             }
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.setup(withWeather: weather)
             }
         }
