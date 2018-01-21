@@ -15,3 +15,9 @@ struct City: Codable {
     let name: String
     let country: String
 }
+
+extension City: Equatable {
+    static func ==(lhs: City, rhs: City) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

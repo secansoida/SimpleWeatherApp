@@ -24,6 +24,9 @@
 		D1D9A9AA2014A91D00D77D4F /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A92014A91D00D77D4F /* Fetcher.swift */; };
 		D1D9A9AD2014AA9500D77D4F /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9AC2014AA9500D77D4F /* WeatherViewController.swift */; };
 		D1D9A9AF2014B81200D77D4F /* ThermometerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9AE2014B81200D77D4F /* ThermometerView.swift */; };
+		D1E7BA3B2015200F00336A9D /* RecentSearchesPersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA3A2015200F00336A9D /* RecentSearchesPersistance.swift */; };
+		D1E7BA3D2015204600336A9D /* UserDefaults+RecentsPersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA3C2015204600336A9D /* UserDefaults+RecentsPersistance.swift */; };
+		D1E7BA402015207F00336A9D /* Array+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA3F2015207F00336A9D /* Array+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		D1D9A9A92014A91D00D77D4F /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		D1D9A9AC2014AA9500D77D4F /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		D1D9A9AE2014B81200D77D4F /* ThermometerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermometerView.swift; sourceTree = "<group>"; };
+		D1E7BA3A2015200F00336A9D /* RecentSearchesPersistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchesPersistance.swift; sourceTree = "<group>"; };
+		D1E7BA3C2015204600336A9D /* UserDefaults+RecentsPersistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+RecentsPersistance.swift"; sourceTree = "<group>"; };
+		D1E7BA3F2015207F00336A9D /* Array+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,8 @@
 		D1D9A9652012232E00D77D4F /* SimpleWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1E7BA3E2015206500336A9D /* Helpers */,
+				D1E7BA3920151FF100336A9D /* Persistance */,
 				D1D9A99F2014A86D00D77D4F /* Networking */,
 				D1D9A9662012232E00D77D4F /* AppDelegate.swift */,
 				D1D9A9682012232E00D77D4F /* ViewController.swift */,
@@ -185,6 +193,23 @@
 				D1D9A99420138CAC00D77D4F /* WeatherFetcher.swift */,
 			);
 			path = Fetchers;
+			sourceTree = "<group>";
+		};
+		D1E7BA3920151FF100336A9D /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				D1E7BA3A2015200F00336A9D /* RecentSearchesPersistance.swift */,
+				D1E7BA3C2015204600336A9D /* UserDefaults+RecentsPersistance.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
+		D1E7BA3E2015206500336A9D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D1E7BA3F2015207F00336A9D /* Array+Convenience.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,12 +351,15 @@
 				D1D9A9692012232E00D77D4F /* ViewController.swift in Sources */,
 				D1D9A9AF2014B81200D77D4F /* ThermometerView.swift in Sources */,
 				D1D9A9AD2014AA9500D77D4F /* WeatherViewController.swift in Sources */,
+				D1E7BA3D2015204600336A9D /* UserDefaults+RecentsPersistance.swift in Sources */,
 				D1D9A9AA2014A91D00D77D4F /* Fetcher.swift in Sources */,
+				D1E7BA3B2015200F00336A9D /* RecentSearchesPersistance.swift in Sources */,
 				D1D9A9672012232E00D77D4F /* AppDelegate.swift in Sources */,
 				D1D9A9A82014A8FF00D77D4F /* Configuration.swift in Sources */,
 				D1D9A9A22014A88C00D77D4F /* City.swift in Sources */,
 				D1D9A99520138CAC00D77D4F /* WeatherFetcher.swift in Sources */,
 				D1D9A9A62014A8DE00D77D4F /* NetworkFetcher.swift in Sources */,
+				D1E7BA402015207F00336A9D /* Array+Convenience.swift in Sources */,
 				D1D9A9A42014A8AC00D77D4F /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
