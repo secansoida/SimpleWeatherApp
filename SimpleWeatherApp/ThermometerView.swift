@@ -133,7 +133,6 @@ private let lineWidth: CGFloat = 4
         let thermometerRect = bounds.insetBy(dx: lineWidth / 2, dy: lineWidth / 2)
         let thermometerPath = UIBezierPath(roundedRect: thermometerRect, cornerRadius: width / 2)
         thermometerPath.lineWidth = lineWidth
-        thermometerPath.stroke()
 
         guard width > 0 else {
             return
