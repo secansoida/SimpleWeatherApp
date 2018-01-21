@@ -23,7 +23,7 @@ struct Configuration {
             let hostURL = URL(string: hostname) else {
                 fatalError("Invalid value for hostname")
         }
-        guard let apiKey = configDictionary["apiKey"] as? String else {
+        guard let apiKey = configDictionary["apiKey"] as? String, !apiKey.isEmpty else {
             fatalError("Invalid value for apiKey")
         }
         return Configuration(hostURL: hostURL, apiKey: apiKey)
