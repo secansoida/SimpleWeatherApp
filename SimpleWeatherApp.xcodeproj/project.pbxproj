@@ -14,9 +14,14 @@
 		D1D9A9712012232E00D77D4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1D9A96F2012232E00D77D4F /* LaunchScreen.storyboard */; };
 		D1D9A97C2012232E00D77D4F /* SimpleWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A97B2012232E00D77D4F /* SimpleWeatherAppTests.swift */; };
 		D1D9A9872012232E00D77D4F /* SimpleWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9862012232E00D77D4F /* SimpleWeatherAppUITests.swift */; };
-		D1D9A99520138CAC00D77D4F /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A99420138CAC00D77D4F /* LocationFetcher.swift */; };
+		D1D9A99520138CAC00D77D4F /* WeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A99420138CAC00D77D4F /* WeatherFetcher.swift */; };
 		D1D9A99C2013AC6600D77D4F /* city.list.json in Resources */ = {isa = PBXBuildFile; fileRef = D1D9A99B2013AC6600D77D4F /* city.list.json */; };
 		D1D9A99E2013B5D200D77D4F /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D9A99D2013B5D200D77D4F /* config.plist */; };
+		D1D9A9A22014A88C00D77D4F /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A12014A88C00D77D4F /* City.swift */; };
+		D1D9A9A42014A8AC00D77D4F /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A32014A8AC00D77D4F /* Weather.swift */; };
+		D1D9A9A62014A8DE00D77D4F /* NetworkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A52014A8DE00D77D4F /* NetworkFetcher.swift */; };
+		D1D9A9A82014A8FF00D77D4F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A72014A8FF00D77D4F /* Configuration.swift */; };
+		D1D9A9AA2014A91D00D77D4F /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A92014A91D00D77D4F /* Fetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +55,14 @@
 		D1D9A9822012232E00D77D4F /* SimpleWeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleWeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D9A9862012232E00D77D4F /* SimpleWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWeatherAppUITests.swift; sourceTree = "<group>"; };
 		D1D9A9882012232E00D77D4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1D9A99420138CAC00D77D4F /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		D1D9A99420138CAC00D77D4F /* WeatherFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFetcher.swift; sourceTree = "<group>"; };
 		D1D9A99B2013AC6600D77D4F /* city.list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.list.json; sourceTree = "<group>"; };
 		D1D9A99D2013B5D200D77D4F /* config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		D1D9A9A12014A88C00D77D4F /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		D1D9A9A32014A8AC00D77D4F /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		D1D9A9A52014A8DE00D77D4F /* NetworkFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetcher.swift; sourceTree = "<group>"; };
+		D1D9A9A72014A8FF00D77D4F /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		D1D9A9A92014A91D00D77D4F /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +113,8 @@
 		D1D9A9652012232E00D77D4F /* SimpleWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1D9A99F2014A86D00D77D4F /* Networking */,
 				D1D9A9662012232E00D77D4F /* AppDelegate.swift */,
-				D1D9A99420138CAC00D77D4F /* LocationFetcher.swift */,
 				D1D9A9682012232E00D77D4F /* ViewController.swift */,
 				D1D9A96A2012232E00D77D4F /* Main.storyboard */,
 				D1D9A96D2012232E00D77D4F /* Assets.xcassets */,
@@ -140,6 +150,35 @@
 				D1D9A99D2013B5D200D77D4F /* config.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D1D9A99F2014A86D00D77D4F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				D1D9A9AB2014A93B00D77D4F /* Fetchers */,
+				D1D9A9A02014A87D00D77D4F /* Models */,
+				D1D9A9A52014A8DE00D77D4F /* NetworkFetcher.swift */,
+				D1D9A9A72014A8FF00D77D4F /* Configuration.swift */,
+				D1D9A9A92014A91D00D77D4F /* Fetcher.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		D1D9A9A02014A87D00D77D4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D1D9A9A12014A88C00D77D4F /* City.swift */,
+				D1D9A9A32014A8AC00D77D4F /* Weather.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D1D9A9AB2014A93B00D77D4F /* Fetchers */ = {
+			isa = PBXGroup;
+			children = (
+				D1D9A99420138CAC00D77D4F /* WeatherFetcher.swift */,
+			);
+			path = Fetchers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,8 +318,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D9A9692012232E00D77D4F /* ViewController.swift in Sources */,
+				D1D9A9AA2014A91D00D77D4F /* Fetcher.swift in Sources */,
 				D1D9A9672012232E00D77D4F /* AppDelegate.swift in Sources */,
-				D1D9A99520138CAC00D77D4F /* LocationFetcher.swift in Sources */,
+				D1D9A9A82014A8FF00D77D4F /* Configuration.swift in Sources */,
+				D1D9A9A22014A88C00D77D4F /* City.swift in Sources */,
+				D1D9A99520138CAC00D77D4F /* WeatherFetcher.swift in Sources */,
+				D1D9A9A62014A8DE00D77D4F /* NetworkFetcher.swift in Sources */,
+				D1D9A9A42014A8AC00D77D4F /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
