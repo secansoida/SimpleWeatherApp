@@ -65,11 +65,11 @@ final class WeatherViewController: UIViewController {
     private func color(forTemperature temperature: Float, defaultColor: UIColor = .black) -> UIColor {
         switch temperature {
         case ..<10:
-            return .blue
+            return .coolBlue
         case 10...20:
             return defaultColor
         default:
-            return .red
+            return .coolRed
         }
     }
 }

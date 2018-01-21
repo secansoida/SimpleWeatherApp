@@ -30,6 +30,7 @@
 		D1E7BA46201529D700336A9D /* citylist.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = D1E7BA45201529D700336A9D /* citylist.sqlite3 */; };
 		D1E7BA4920152E3800336A9D /* CityListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA4820152E3800336A9D /* CityListProvider.swift */; };
 		D1E7BA4B20152E7500336A9D /* SQLiteCityListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA4A20152E7500336A9D /* SQLiteCityListProvider.swift */; };
+		D1E7BA4D2015351C00336A9D /* UIColor+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA4C2015351C00336A9D /* UIColor+Assets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		D1E7BA45201529D700336A9D /* citylist.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = citylist.sqlite3; sourceTree = "<group>"; };
 		D1E7BA4820152E3800336A9D /* CityListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListProvider.swift; sourceTree = "<group>"; };
 		D1E7BA4A20152E7500336A9D /* SQLiteCityListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteCityListProvider.swift; sourceTree = "<group>"; };
+		D1E7BA4C2015351C00336A9D /* UIColor+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Assets.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E7BA3F2015207F00336A9D /* Array+Convenience.swift */,
+				D1E7BA4C2015351C00336A9D /* UIColor+Assets.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				D1E7BA3D2015204600336A9D /* UserDefaults+RecentsPersistance.swift in Sources */,
 				D1D9A9AA2014A91D00D77D4F /* Fetcher.swift in Sources */,
 				D1E7BA3B2015200F00336A9D /* RecentSearchesPersistance.swift in Sources */,
+				D1E7BA4D2015351C00336A9D /* UIColor+Assets.swift in Sources */,
 				D1D9A9672012232E00D77D4F /* AppDelegate.swift in Sources */,
 				D1D9A9A82014A8FF00D77D4F /* Configuration.swift in Sources */,
 				D1E7BA4B20152E7500336A9D /* SQLiteCityListProvider.swift in Sources */,
