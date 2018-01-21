@@ -31,12 +31,13 @@ class ViewController: UIViewController {
         definesPresentationContext = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let weatherVC = segue.destination as? WeatherViewController,
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
+            weatherVC.city = filteredCities[indexPath.row]
+        }
     }
-
-
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {

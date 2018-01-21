@@ -22,6 +22,7 @@
 		D1D9A9A62014A8DE00D77D4F /* NetworkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A52014A8DE00D77D4F /* NetworkFetcher.swift */; };
 		D1D9A9A82014A8FF00D77D4F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A72014A8FF00D77D4F /* Configuration.swift */; };
 		D1D9A9AA2014A91D00D77D4F /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9A92014A91D00D77D4F /* Fetcher.swift */; };
+		D1D9A9AD2014AA9500D77D4F /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D9A9AC2014AA9500D77D4F /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		D1D9A9A52014A8DE00D77D4F /* NetworkFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetcher.swift; sourceTree = "<group>"; };
 		D1D9A9A72014A8FF00D77D4F /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		D1D9A9A92014A91D00D77D4F /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		D1D9A9AC2014AA9500D77D4F /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				D1D9A99F2014A86D00D77D4F /* Networking */,
 				D1D9A9662012232E00D77D4F /* AppDelegate.swift */,
 				D1D9A9682012232E00D77D4F /* ViewController.swift */,
+				D1D9A9AC2014AA9500D77D4F /* WeatherViewController.swift */,
 				D1D9A96A2012232E00D77D4F /* Main.storyboard */,
 				D1D9A96D2012232E00D77D4F /* Assets.xcassets */,
 				D1D9A96F2012232E00D77D4F /* LaunchScreen.storyboard */,
@@ -318,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1D9A9692012232E00D77D4F /* ViewController.swift in Sources */,
+				D1D9A9AD2014AA9500D77D4F /* WeatherViewController.swift in Sources */,
 				D1D9A9AA2014A91D00D77D4F /* Fetcher.swift in Sources */,
 				D1D9A9672012232E00D77D4F /* AppDelegate.swift in Sources */,
 				D1D9A9A82014A8FF00D77D4F /* Configuration.swift in Sources */,
