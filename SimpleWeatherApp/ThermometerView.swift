@@ -83,12 +83,22 @@ private let lineWidth: CGFloat = 4
         isAnimating = false
     }
 
+    func animateFill(toPercentage percentage: CGFloat, afterDelay delay: TimeInterval?) {
+        if let delay = delay {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.animateFill(toPercentage: percentage)
+            }
+        } else {
+            self.animateFill(toPercentage: percentage)
+        }
+    }
+
     func animateFill(toPercentage percentage: CGFloat) {
         CATransaction.begin()
         let animation = CABasicAnimation(keyPath: "path")
         let newPath = fillPath(forPerctentage: percentage)
         animation.toValue = newPath
-        animation.duration = Double(2.5 * abs(fillPercentage - percentage))
+        animation.duration = max(0.3, Double(2.5 * abs(fillPercentage - percentage)))
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         animation.fillMode = kCAFillModeForwards
         isAnimating = true

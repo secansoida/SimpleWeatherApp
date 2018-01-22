@@ -26,6 +26,8 @@ final class WeatherViewController: UIViewController {
     @IBOutlet private var humidityLabel: UILabel!
     @IBOutlet private var pressureLabel: UILabel!
 
+    private var viewStartedAppearing: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,32 +36,49 @@ final class WeatherViewController: UIViewController {
         let networkFetcher = NetworkFetcher(configuration: Configuration.fromPlist)
         weatherFetcher = WeatherFetcher(fetcher: networkFetcher)
 
-        temperatureLabel.text = nil
-        humidityLabel.text = nil
-        pressureLabel.text = nil
+        temperatureLabel.alpha = 0
+        humidityLabel.alpha = 0
+        pressureLabel.alpha = 0
         thermometerView.animate()
         weatherFetcher.fetchWeather(forCityID: city.id) { (weather) in
             DispatchQueue.main.async {
                 self.thermometerView.stopAnimating()
-            }
-            guard let weather = weather else {
-                return
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.setup(withWeather: weather)
+                guard let weather = weather else {
+                    return
+                }
+                self.weather = weather
+                // Ufortunately this does not animate properly when called immedaitely
+                // after stopAnimating; Could not find any other way aroud this
+                self.setup(withWeather: weather, animated: self.viewStartedAppearing, thermometerAnimationDelay: 0.1)
             }
         }
     }
 
-    private func setup(withWeather weather: Weather) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        viewStartedAppearing = true
+    }
+
+    private func setup(withWeather weather: Weather, animated: Bool, thermometerAnimationDelay: TimeInterval?) {
         self.weather = weather
         let percentage = CGFloat((weather.mainConditions.temp - minTemperature) / (maxTemperature - minTemperature))
-        thermometerView.animateFill(toPercentage: min(1, max(0, percentage)))
+        if animated {
+            thermometerView.animateFill(toPercentage: min(1, max(0, percentage)), afterDelay: thermometerAnimationDelay)
+        } else {
+            thermometerView.fillPercentage = percentage
+        }
         thermometerView.fillColor = color(forTemperature: weather.mainConditions.temperatureInCelcius, defaultColor: .darkGray)
         temperatureLabel.text = "\(Int(weather.mainConditions.temperatureInCelcius))℃"
         temperatureLabel.textColor = color(forTemperature: weather.mainConditions.temperatureInCelcius)
         humidityLabel.text = "\(weather.mainConditions.humidity)%"
         pressureLabel.text = "\(Int(weather.mainConditions.pressure)) hPa"
+
+        UIView.animate(withDuration: animated ? 0.3 : 0) {
+            self.temperatureLabel.alpha = 1
+            self.humidityLabel.alpha = 1
+            self.pressureLabel.alpha = 1
+        }
     }
 
     private func color(forTemperature temperature: Float, defaultColor: UIColor = .black) -> UIColor {
