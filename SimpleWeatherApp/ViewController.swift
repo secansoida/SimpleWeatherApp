@@ -55,23 +55,41 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let weatherVC = segue.destination as? WeatherViewController,
-            let cell = sender as? UITableViewCell,
-            let indexPath = tableView.indexPath(for: cell) {
-            let city: City
-            switch mode {
-            case .recent:
-                city = recentlySearchedCities[indexPath.row]
-            case .searchResults:
-                city = filteredCities[indexPath.row]
+        switch segue.identifier! {
+        case "showWeather":
+            if let weatherVC = segue.destination as? WeatherViewController,
+                let cell = sender as? UITableViewCell,
+                let indexPath = tableView.indexPath(for: cell) {
+                let city: City
+                switch mode {
+                case .recent:
+                    city = recentlySearchedCities[indexPath.row]
+                case .searchResults:
+                    city = filteredCities[indexPath.row]
+                }
+                weatherVC.city = city
+                recentlySearchedCities.remove(object: city)
+                recentlySearchedCities.insert(city, at: 0)
+                if recentlySearchedCities.count > 10 {
+                    recentlySearchedCities.removeLast()
+                }
             }
-            weatherVC.city = city
-            recentlySearchedCities.remove(object: city)
-            recentlySearchedCities.insert(city, at: 0)
-            if recentlySearchedCities.count > 10 {
-                recentlySearchedCities.removeLast()
+        case "showMap":
+            if let mapVC = segue.destination as? MapViewController,
+                let indexPath = sender as? IndexPath {
+                let city: City
+                switch mode {
+                case .recent:
+                    city = recentlySearchedCities[indexPath.row]
+                case .searchResults:
+                    city = filteredCities[indexPath.row]
+                }
+                mapVC.city = city
             }
+        default:
+            assertionFailure()
         }
+
     }
 }
 
@@ -99,6 +117,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.textLabel?.text = "\(city.name), \(city.country)"
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        performSegue(withIdentifier: "showMap", sender: indexPath)
     }
 }
 

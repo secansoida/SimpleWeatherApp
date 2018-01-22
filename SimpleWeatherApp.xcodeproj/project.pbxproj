@@ -31,6 +31,7 @@
 		D1E7BA4920152E3800336A9D /* CityListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA4820152E3800336A9D /* CityListProvider.swift */; };
 		D1E7BA4B20152E7500336A9D /* SQLiteCityListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA4A20152E7500336A9D /* SQLiteCityListProvider.swift */; };
 		D1E7BA4D2015351C00336A9D /* UIColor+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA4C2015351C00336A9D /* UIColor+Assets.swift */; };
+		D1E7BA4F2015456E00336A9D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E7BA4E2015456E00336A9D /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		D1E7BA4820152E3800336A9D /* CityListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListProvider.swift; sourceTree = "<group>"; };
 		D1E7BA4A20152E7500336A9D /* SQLiteCityListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteCityListProvider.swift; sourceTree = "<group>"; };
 		D1E7BA4C2015351C00336A9D /* UIColor+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Assets.swift"; sourceTree = "<group>"; };
+		D1E7BA4E2015456E00336A9D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				D1D9A99F2014A86D00D77D4F /* Networking */,
 				D1D9A9662012232E00D77D4F /* AppDelegate.swift */,
 				D1D9A9682012232E00D77D4F /* ViewController.swift */,
+				D1E7BA4E2015456E00336A9D /* MapViewController.swift */,
 				D1D9A9AC2014AA9500D77D4F /* WeatherViewController.swift */,
 				D1D9A9AE2014B81200D77D4F /* ThermometerView.swift */,
 				D1D9A96A2012232E00D77D4F /* Main.storyboard */,
@@ -391,6 +394,7 @@
 				D1E7BA4B20152E7500336A9D /* SQLiteCityListProvider.swift in Sources */,
 				D1D9A9A22014A88C00D77D4F /* City.swift in Sources */,
 				D1E7BA4920152E3800336A9D /* CityListProvider.swift in Sources */,
+				D1E7BA4F2015456E00336A9D /* MapViewController.swift in Sources */,
 				D1D9A99520138CAC00D77D4F /* WeatherFetcher.swift in Sources */,
 				D1D9A9A62014A8DE00D77D4F /* NetworkFetcher.swift in Sources */,
 				D1E7BA402015207F00336A9D /* Array+Convenience.swift in Sources */,

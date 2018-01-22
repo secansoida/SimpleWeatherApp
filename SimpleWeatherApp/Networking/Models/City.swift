@@ -10,10 +10,16 @@ import Foundation
 
 typealias CityID = Int
 
+struct Location: Codable {
+    let lat: Float
+    let lon: Float
+}
+
 struct City: Codable {
     let id: CityID
     let name: String
     let country: String
+    let coord: Location
 }
 
 extension City: Equatable {

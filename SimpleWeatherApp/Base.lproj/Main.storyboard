@@ -22,15 +22,15 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CityCell" textLabel="ocq-6d-7A4" style="IBUITableViewCellStyleDefault" id="Fmw-eu-p3w">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="CityCell" textLabel="ocq-6d-7A4" style="IBUITableViewCellStyleDefault" id="Fmw-eu-p3w">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fmw-eu-p3w" id="DTp-4I-ydb">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="308" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ocq-6d-7A4">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="293" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -39,7 +39,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="yPk-tb-5uE" kind="show" id="mYU-sG-nPe"/>
+                                            <segue destination="yPk-tb-5uE" kind="show" identifier="showWeather" id="mYU-sG-nPe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -63,6 +63,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="01T-kU-TbS" id="L7s-vh-HPk"/>
+                        <segue destination="jo0-C3-v48" kind="show" identifier="showMap" id="Rbq-Vw-KXc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -181,6 +182,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2J-ry-cd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1181.5999999999999" y="32.833583208395808"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="NZR-Co-c0E">
+            <objects>
+                <viewController id="jo0-C3-v48" customClass="MapViewController" customModule="SimpleWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E3R-x8-trJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hAI-Lk-rrX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hAI-Lk-rrX" firstAttribute="leading" secondItem="gIh-2b-uST" secondAttribute="leading" id="3GD-ne-0UM"/>
+                            <constraint firstItem="gIh-2b-uST" firstAttribute="trailing" secondItem="hAI-Lk-rrX" secondAttribute="trailing" id="GZw-Vd-x8i"/>
+                            <constraint firstItem="hAI-Lk-rrX" firstAttribute="leading" secondItem="gIh-2b-uST" secondAttribute="leading" id="R7N-Zs-JYb"/>
+                            <constraint firstItem="gIh-2b-uST" firstAttribute="bottom" secondItem="hAI-Lk-rrX" secondAttribute="bottom" id="Wuv-cY-kaF"/>
+                            <constraint firstItem="gIh-2b-uST" firstAttribute="trailing" secondItem="hAI-Lk-rrX" secondAttribute="trailing" id="dmq-PD-fuB"/>
+                            <constraint firstItem="hAI-Lk-rrX" firstAttribute="top" secondItem="gIh-2b-uST" secondAttribute="top" id="iKL-4M-XZ5"/>
+                            <constraint firstItem="hAI-Lk-rrX" firstAttribute="top" secondItem="gIh-2b-uST" secondAttribute="top" id="vqR-qE-Ncn"/>
+                            <constraint firstItem="gIh-2b-uST" firstAttribute="bottom" secondItem="hAI-Lk-rrX" secondAttribute="bottom" id="x5N-yQ-LK3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gIh-2b-uST"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="hAI-Lk-rrX" id="z6G-sD-nTV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TxT-Mo-mUV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1182" y="692"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0xh-TO-kbV">
