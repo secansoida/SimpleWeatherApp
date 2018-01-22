@@ -24,7 +24,6 @@ final class WeatherFetcher {
                 completion(nil)
                 return
             }
-            print(String(data: data, encoding: .utf8) ?? "no")
             do {
                 let weather = try JSONDecoder().decode(Weather.self, from: data)
                 completion(weather)

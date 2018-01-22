@@ -20,7 +20,6 @@ final class NetworkFetcher: Fetcher {
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { fatalError() }
         components.queryItems = parameters.map(URLQueryItem.init)
         components.queryItems?.append(URLQueryItem(name: "appid", value: configuration.apiKey))
-        print(components.url?.absoluteString ?? "no url")
         let task = session.dataTask(with: components.url!) { (data, response, error) in
             completion(data)
         }
