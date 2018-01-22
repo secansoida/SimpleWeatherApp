@@ -20,10 +20,15 @@ class MapViewController: UIViewController {
 
         let pin = MKPointAnnotation()
         pin.title = city.name
-        pin.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(city.coord.lat), longitude: CLLocationDegrees(city.coord.lon))
+        pin.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(city.coord.lat),
+                                                longitude: CLLocationDegrees(city.coord.lon))
         mapView.addAnnotation(pin)
 
         mapView.centerCoordinate = pin.coordinate
+    }
+
+    @IBAction private func close() {
+        dismiss(animated: true, completion: nil)
     }
 
 }

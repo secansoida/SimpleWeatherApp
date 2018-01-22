@@ -55,8 +55,8 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case "showWeather":
+        switch segue.identifier {
+        case "showWeather"?:
             if let weatherVC = segue.destination as? WeatherViewController,
                 let cell = sender as? UITableViewCell,
                 let indexPath = tableView.indexPath(for: cell) {
@@ -74,9 +74,11 @@ class ViewController: UIViewController {
                     recentlySearchedCities.removeLast()
                 }
             }
-        case "showMap":
-            if let mapVC = segue.destination as? MapViewController,
-                let indexPath = sender as? IndexPath {
+        case "showMap"?:
+            if let navVC = segue.destination as? UINavigationController,
+                let mapVC = navVC.topViewController as? MapViewController,
+                let cell = sender as? UITableViewCell,
+                let indexPath = tableView.indexPath(for: cell) {
                 let city: City
                 switch mode {
                 case .recent:
@@ -87,7 +89,7 @@ class ViewController: UIViewController {
                 mapVC.city = city
             }
         default:
-            assertionFailure()
+            assertionFailure("Invalid segue identifier")
         }
 
     }
@@ -117,10 +119,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.textLabel?.text = "\(city.name), \(city.country)"
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        performSegue(withIdentifier: "showMap", sender: indexPath)
     }
 }
 
